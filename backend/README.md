@@ -8,11 +8,18 @@
 2. `run.bat` 더블클릭
 3. 브라우저에서 `http://127.0.0.1:8000` 접속
 
-## 명령어 실행
+## uv 환경에서 실행
+
+```bash
+uv sync
+uv run uvicorn main:app --reload
+```
+
+## 일반 Python 환경에서 실행
 
 ```bash
 python -m pip install -r requirements.txt
-python -m uvicorn app.main:app --reload
+python -m uvicorn main:app --reload
 ```
 
 - 웹 화면: `http://127.0.0.1:8000`
@@ -21,7 +28,8 @@ python -m uvicorn app.main:app --reload
 
 ## 폴더 구조
 
-- `app/main.py`: FastAPI 서버
+- `main.py`: Uvicorn 실행 진입점 (`main:app`)
+- `app/main.py`: 기존 FastAPI 애플리케이션 구현
 - `app/static/`: 실행용 웹 화면과 번들
 - `frontend_source/`: 업로드된 원본 React/Next 소스 전체
 - `build_frontend.js`: 원본 TS/TSX에서 실행 번들을 재생성하는 스크립트
